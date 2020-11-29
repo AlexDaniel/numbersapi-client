@@ -12,8 +12,13 @@ def run(args: list, exitcode: int = 0, empty_stderr: bool = True):
     assert (not result.stderr) == empty_stderr
     assert result.returncode == exitcode
 
+    try:
+        parsed_json = json.loads(result.stdout)
+    except json.decoder.JSONDecodeError:
+        parsed_json = None
+
     return {
-        'json': json.loads(result.stdout),
+        'json': parsed_json,
         'stderr': result.stderr,
     }
 
@@ -93,14 +98,14 @@ def test_random():
     assert 'text'   in result
 
 
-# def test_wrong_number():
-#     with pytest.raises(NumbersAPIException):
-#         get_number_fact('foo')
+def test_wrong_number():
+    output = run(['foo'], empty_stderr=False, exitcode=2)
+    assert b'error: argument number' in output['stderr']
 
 
-# def test_numbersapi_bug():
-#     with pytest.raises(NumbersAPIBugException):
-#         get_number_fact('10000000/1', type='date')
+def test_numbersapi_bug():
+    output = run(['foo'], empty_stderr=False, exitcode=2)
+    assert b'error: argument number' in output['stderr']
 
 
 def test_fragment():
