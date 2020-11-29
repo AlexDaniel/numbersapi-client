@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Command-line client for NumbersAPI"""
+
 import sys
 import argparse
 
@@ -72,10 +74,10 @@ def main():
         print(get_number_fact(raw=True, **vars(args)))
     except NumbersAPIException:
         print('Error: NumbersAPI returned an error', file=sys.stderr)
-        exit(1)
+        sys.exit(1)
     except NumbersAPIBugException:
         print('Error: NumbersAPI got confused by the provided arguments', file=sys.stderr)
-        exit(1)
+        sys.exit(1)
 
 
 if __name__ == '__main__':

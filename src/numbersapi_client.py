@@ -1,8 +1,10 @@
-import requests
+"""API client for NumbersAPI."""
+
 import json
 from datetime import date, datetime
 from typing import Optional, Union
 from enum import Enum
+import requests
 
 
 class FactType(Enum):
@@ -20,12 +22,10 @@ class NotFound(Enum):
 
 class NumbersAPIException(Exception):
     """The supplied arguments are not supported by NumbersAPI."""
-    pass
 
 
 class NumbersAPIBugException(Exception):
     """The API returned a clearly erroneous result."""
-    pass
 
 
 def _numify(data, response):
@@ -120,7 +120,7 @@ def dateify(maybe_date: str):
 
 def get_date_fact(
         date: Union[datetime, date, str] = 'random',
-        *args, **kwargs,
+        **kwargs,
 ):
     """
     Get JSON results about dates from NumbersAPI.
@@ -131,4 +131,4 @@ def get_date_fact(
     :return: Response from the NumbersAPI.
     """
 
-    return get_number_fact(dateify(date), FactType.DATE.value, *args, **kwargs)
+    return get_number_fact(dateify(date), FactType.DATE.value, **kwargs)
