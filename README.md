@@ -1,6 +1,6 @@
 ## NumbersAPI Python Client
 
-A simple Python library for interfacing with [NumbersAPI](numbersapi.com/).
+A simple Python library for interfacing with [NumbersAPI](http://numbersapi.com/).
 
 ### Installation
 
