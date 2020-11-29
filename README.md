@@ -72,7 +72,6 @@ Then in the spawned shell you will be able to use the command-line tool:
 
 
 ```
-
 {
  "text": "42 is the answer to the Ultimate Question of Life, the Universe, and Everything.",
  "number": 42,
