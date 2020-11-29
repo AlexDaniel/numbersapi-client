@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "numbersapi-client"
+version = "0.0.1"
+description = "A basic library for interfacing with NumbersAPI"
+authors = ["Aleks-Daniel Jakimenko-Aleksejev <alex.jakimenko@gmail.com>"]
+license = "AGPL-3.0-or-later"
+readme = "README.md"
+
+keywords = ["numbers",]
+classifiers = [
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+packages = [ { include = "*.py", from = "src" } ]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.25.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+numbersapi-cli = "numbersapi_cli:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
